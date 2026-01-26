@@ -1,0 +1,15 @@
+Hãy hoàn thành danh sách kiểm tra này để xác minh mã của bạn đáp ứng tất cả các yêu cầu:
+
+Tệp có phần mở rộng .php và nằm ở vị trí chính xác.	2/2
+Thẻ mở PHP (<?php) hiện diện	2/2
+Thẻ đóng PHP (?>) hiện diện	2/2
+Gán giá trị cho các biến như tên, mã sinh viên, lớp, email.	3/3
+Ít nhất 4 câu lệnh echo hiển thị các biến	3/3
+Hàm `date()` dùng để hiển thị ngày hiện tại.	2/2
+Hàm date() dùng để hiển thị thời gian hiện tại.	2/2
+Ít nhất một dòng chú thích (// hoặc /* */)	2/2
+Tất cả các câu lệnh đều kết thúc bằng dấu chấm phẩy.	3/3
+Mã nguồn dễ đọc hơn nếu được thụt lề đúng cách.	2/2
+Không có lỗi PHP nào xảy ra khi chạy tập tin trong trình duyệt.	3/3
+Kết quả hiển thị mang tính chuyên nghiệp.	3/3
+TỔNG ĐIỂM	30/30
