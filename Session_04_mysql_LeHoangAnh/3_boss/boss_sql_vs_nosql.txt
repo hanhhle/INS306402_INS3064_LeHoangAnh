@@ -1,0 +1,30 @@
+SCENARIO 1: HIGH-VELOCITY SOCIAL MEDIA FEED
+DECISION: NoSQL (e.g., MongoDB, Cassandra, DynamoDB)
+
+ENGINEERING JUSTIFICATION:
+1. Mở rộng ngang: 
+Hệ thống mạng xã hội sinh ra một lượng dữ liệu khổng lồ với tốc độ chóng mặt (high-velocity) từ hàng triệu người dùng cùng lúc
+NoSQL được thiết kế để dễ dàng "Scale Horizontally" (phân tán dữ liệu ra nhiều server rẻ tiền)
+Điều này giúp hệ thống chịu tải tốt hơn nhiều so với việc phải nhồi nhét mọi thứ vào một server siêu mạnh
+
+2. Sự linh hoạt của Schema: 
+Một bài đăng (post) trên mạng xã hội không có cấu trúc cố định
+Có bài chỉ có text, bài có video, bài có poll bình chọn, bài lại có metadata về vị trí
+Sử dụng NoSQL (như Document database lưu dưới dạng JSON) cung cấp "Schema Flexibility", cho phép hệ thống lưu trữ dữ liệu đa hình thái mà không cần phải liên tục thay đổi cấu trúc bảng (ALTER TABLE) tốn kém và nguy hiểm
+
+3. Ưu tiên Tốc độ ghi thay vì Tính nhất quán tuyệt đối: 
+Đối với News Feed, việc một bài đăng hiện chậm 1-2 giây với người dùng A so với người dùng B không phải là thảm họa. Do đó, hệ thống không cần tuân thủ ACID quá khắt khe, mà ưu tiên tốc độ đọc/ghi (high throughput) để mang lại trải nghiệm mượt mà không bị giật lag hay khóa bảng (table locks).
+
+------------------------------------------------------------------------
+SCENARIO 2: SECURE BANK LEDGER
+DECISION: SQL / Relational Database (e.g., PostgreSQL, MySQL, Oracle)
+
+ENGINEERING JUSTIFICATION:
+1. Tuân thủ nguyên tắc ACID tuyệt đối: 
+Đối với sổ cái ngân hàng (Bank Ledger), tính nguyên tử (Atomicity), nhất quán (Consistency), cách ly (Isolation) và bền vững (Durability) là sống còn. Lệnh chuyển tiền phải tuân theo quy tắc "All or Nothing" (thành công toàn bộ hoặc không có gì xảy ra). SQL databases hỗ trợ Transactions với chuẩn ACID khắt khe nhất, đảm bảo tiền không bao giờ bị trừ ở tài khoản A mà lại không cộng vào tài khoản B nếu hệ thống sập giữa chừng.
+
+2. Toàn vẹn dữ liệu & Cấu trúc chặt chẽ: 
+Dữ liệu tài chính không được phép "linh hoạt" (Schema flexibility is dangerous here). Mọi giao dịch phải khớp chính xác kiểu dữ liệu (ví dụ DECIMAL cho tiền tệ) và các ràng buộc khóa ngoại (Foreign Keys) để liên kết bảng User, Account và Transaction. SQL từ chối thẳng thừng các dữ liệu rác hoặc sai cấu trúc, bảo vệ hệ thống khỏi những sai sót tai hại.
+
+3. Vertical Scalability & Complex Auditing: 
+Dù Scale ngang (Horizontal) khó hơn, SQL databases lại hỗ trợ Scale dọc (Vertical Scalability - nâng cấp RAM, CPU cho một server trung tâm) rất mạnh mẽ để xử lý các giao dịch phức tạp. Thêm vào đó, nghiệp vụ ngân hàng đòi hỏi các truy vấn JOIN nhiều bảng phức tạp để kiểm toán (auditing), đối soát cuối ngày và xuất báo cáo tài chính – thứ mà SQL sinh ra để làm tốt nhất.
