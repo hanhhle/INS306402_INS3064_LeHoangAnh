@@ -1,0 +1,3 @@
+Verify every item below before zipping folder
+
+[] Folder Structure: Zip match the require
