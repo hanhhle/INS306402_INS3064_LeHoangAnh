@@ -1,1 +1,8 @@
-[]
+{
+    "hoanganh": {
+        "email": "23070692@vnu.edu.vn",
+        "password": "$2y$10$79ulvgy1goDTeXqZB3mD7uooK9K5ogGvSCiz04hFOKuK3qlI7Rtyy",
+        "bio": "&lt;script&gt;alert(&#039;hack&#039;)&lt;\/script&gt;",
+        "avatar": "hoanganh_69af0fe36e7362.76174613.jpeg"
+    }
+}

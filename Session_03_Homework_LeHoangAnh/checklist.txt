@@ -1,3 +1,25 @@
-Verify every item below before zipping folder
+Submission Checklist
 
-[] Folder Structure: Zip match the require
+[v] Folder Structure: Does your zip match the required structure?
+
+[v] Naming: Are all files in snake_case? (No spaces!)
+
+[v] Core Exercises: Have you completed all 8 core exercises?
+
+[v] Advanced Exercises: Have you completed all 6 advanced exercises?
+
+[v] Mini Project: Does the Mini Project include Registration, Login, AND Profile Edit?
+
+[v] Testing: Did you run the "Acceptance Tests" manually?
+
+[v] Validation: Did you try submitting empty forms to ensure errors appear?
+
+[v] XSS: Did you try submitting HTML tags to ensure they don't break the layout?
+
+[v] Debug Mode: Is display_errors on in your local environment (so you know your code works)?
+
+[v] Cleanup: Did you remove temporary test files or backups?
+
+[v] Format: Is the file extension .zip (not .rar or .7z)? no zip
+
+[v] Labeling: Is the zip file named homework_session_03_yourname.zip?
