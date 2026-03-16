@@ -5,18 +5,18 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
-// 1. Retrieve the requested page parameter (default to 'home')
+// 1. Lấy tham số trang được yêu cầu từ URL (mặc định sẽ là trang 'home' nếu không có)
 $requestedPage = $_GET['page'] ?? 'home';
 
-// 2. Security: Define a strict whitelist of allowed routes
-// This prevents Local File Inclusion (LFI) vulnerabilities.
+// 2. Bảo mật: Xác định một danh sách trắng (whitelist) các route được phép truy cập
 $allowedRoutes = ['home', 'contact'];
 
-// 3. Routing Logic
+// 3. Logic điều hướng (Routing)
 if (in_array($requestedPage, $allowedRoutes, true)) {
+    // Nếu trang hợp lệ, tạo đường dẫn tuyệt đối tới file view tương ứng
     $viewFile = __DIR__ . '/pages/' . $requestedPage . '.php';
 } else {
-    // Handle 404 Not Found
+    // Xử lý lỗi 404 nếu người dùng nhập sai tên trang
     http_response_code(404);
     $viewFile = __DIR__ . '/pages/404.php';
 }
@@ -52,7 +52,7 @@ if (in_array($requestedPage, $allowedRoutes, true)) {
     <main>
         <div class="content-box">
             <?php
-            // 4. Inject the dynamically determined view
+            // 4. Nhúng file view đã được xác định động ở bước 3 vào giao diện chính
             if (file_exists($viewFile)) {
                 require_once $viewFile;
             } else {
