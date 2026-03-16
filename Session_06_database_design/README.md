@@ -10,16 +10,16 @@
 | Enrollments | (StudentID, CourseID) | StudentID, CourseID | 3NF         | Bảng trung gian liên kết sinh viên với khoá học |
 
 ## Task 2:
-**Students - Courses**
+**Students - Courses**<br>
 **Relationship Type:** N:N. Một sinh viên có thể đăng ký nhiều môn học và một môn học có thể có nhiều sinh viên
 
-**Students - Enrollments**
+**Students - Enrollments**<br>
 **Relationship Type:** 1:N. Một sinh viên có nhiều bảng liên kết do học nhiều môn
 
-**Courses - Enrollments**
+**Courses - Enrollments**<br>
 **Relationship Type:** 1:N. Một môn có nhiều bảng liên kết do có nhiều sinh viên học
 
-**Professors - Courses**
+**Professors - Courses**<br>
 **Relationship Type:** 1:N. Một giảng viên dạy nhiều môn học khác nhau
 
 # Part 2: Relationships
