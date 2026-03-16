@@ -1,6 +1,6 @@
 
-## Part 1: Normalization
-# Task 1: 
+# Part 1: Normalization
+## Task 1: 
 
 | Table Name  | Primary Key           | Foreign Key         | Normal Form | Description                                     |
 | :---        | :---                  | :---                | :---        | :---                                            |
@@ -9,7 +9,7 @@
 | Courses     | CourseID              | ProfessorEmail      | 3NF         | Lưu trữ thông tin môn học                       |
 | Enrollments | (StudentID, CourseID) | StudentID, CourseID | 3NF         | Bảng trung gian liên kết sinh viên với khoá học |
 
-# Task 2:
+## Task 2:
 **Students - Courses**
 **Relationship Type:** N:N. Một sinh viên có thể đăng ký nhiều môn học và một môn học có thể có nhiều sinh viên
 
@@ -22,7 +22,7 @@
 **Professors - Courses**
 **Relationship Type:** 1:N. Một giảng viên dạy nhiều môn học khác nhau
 
-## Part 2: Relationships
+# Part 2: Relationships
 **1. Author — Book**
 - **Relationship Type:** N:N. Một cuốn sách có thể có nhiều tác giả và một tác giả có thể viết nhiều sách
 - **FK Location:** Ở bảng trung gian
