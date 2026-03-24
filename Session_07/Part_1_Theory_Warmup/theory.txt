@@ -1,0 +1,19 @@
+1. INNER JOIN vs. LEFT JOIN
+* INNER JOIN: Retrieves only the records that possess matching values in both interconnected tables[cite: 12, 245].
+* LEFT JOIN: Preserves all records from the left table, even in the absence of matching records in the right table[cite: 12, 276, 277].
+
+2. Purpose of the HAVING Clause
+* Purpose: Functions to filter grouped data AFTER aggregate calculations (e.g., SUM, COUNT) have been executed[cite: 13, 327, 328].
+* Distinction from WHERE: The WHERE clause filters individual rows BEFORE the grouping process and cannot be applied alongside aggregate functions[cite: 13, 325, 326].
+
+3. Concept and Advantages of PDO
+* Concept: PDO (PHP Data Objects) serves as a database connection interface[cite: 14, 176].
+* Advantages: It supports multiple database types, prevents SQL Injection attacks to enhance security, and offers robust exception handling capabilities[cite: 14, 189, 190].
+
+4. SQL Injection Prevention via Prepared Statements
+* Mechanism: Prepared statements strictly prohibit the direct concatenation of user input strings into SQL queries[cite: 15, 428]. This separation ensures malicious inputs (such as ' OR 1=1) cannot alter the underlying SQL logic or expose sensitive data[cite: 15, 433].
+
+5. Execution Order: WHERE, GROUP BY, HAVING
+* 1. WHERE: Evaluates and filters initial rows prior to any grouping[cite: 16, 325, 326].
+* 2. GROUP BY: Aggregates the filtered data into distinct groups[cite: 16, 318, 323].
+* 3. HAVING: Applies final filtering conditions to the formed groups following the completion of aggregate computations[cite: 16, 327, 328].
