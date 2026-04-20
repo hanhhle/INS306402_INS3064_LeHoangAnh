@@ -1,0 +1,150 @@
+# Step-by-step plan (7 days)
+
+## Day 1 — Understand the problem (no code)
+### 1. User Roles:
+**Student**: Creates and tracks repair requests
+**Staff**: Receives, processes, and updates request status
+
+### 2. Requirements List:
+- Students can log into the system
+- Students can create a new request including: Title, Location (room, building,...) and Description in details
+- The system automatically assigns the status Pending to newly created requests
+- Students can view a list of their submitted requests
+- Students can click on a request to view details
+- Students can track the status of their requests in real-time
+- Students can receive notifications when the status of their request changes
+
+- Staff can log into the system
+- Staff can view a dashboard of all pending requests assigned to them
+- Staff can click on a request to view details and update the status
+- Staff can view a list of all requests from the entire school
+- Staff can filter requests by status (Pending, In Progress, Done)
+- Staff can update the status of a request from Pending to In Progress
+- Staff can close a request by changing the status to Done
+
+- The system should send notifications to students when the status of their request changes
+- The system should maintain a history of status changes for each request
+- The system should allow students to delete their requests if they are no longer needed
+- The system should have a feedback mechanism for students to rate the service after their request is completed
+
+## Day 2 — Use cases (no code)
+### Use Case 1: 
+**Use Case Name**: Submit a request
+**Actor**: Student
+**Trigger**: Students click the "Create New Request" button on the interface  
+**Main Flow (3–6 steps)**:
+- Step 1: The system displays the sample input request form
+- Step 2: Students enter the title, classroom, and error description
+- Step 3: Students click the "Submit" button
+- Step 4: The system data view shows no blank spaces
+- Step 5: The request is saved to the database with the status "Pending"
+**Alternative Flow (optional)**: In step 4, if the data is blank, the system will report an error and request the student to re-enter the information
+**Success Outcome**: The request is successfully created, and the student is redirected to the Request List page
+
+### Use Case 2:
+**Use Case Name**: View Request List
+**Actor**: Student
+**Trigger**: The student selects "My Request List" from the menu bar
+**Main Flow**:
+- Step 1: The system receives the access request from the student.
+- Step 2: The database queries the system to retrieve the appropriate request ID for the logged-in student.
+- Step 3: The system displays the list in a table format (including Title, Position, Creation Date, and Status).
+**Alternative Flow**: If the student has never created a request, the system displays the message: "You have no requests on the system."
+**Success Outcome**: The list of requests is clearly displayed for user tracking.
+
+### Use Case 3:
+**Use Case Name**: View Request Details
+**Actor**: Student or staff
+**Trigger**: The user clicks on the Title or the "View Details" button of a line in the list.
+**Main Flow**:
+- Step 1: The system ID is requested to be clicked.
+- Step 2: The database accesses the system to retrieve all the details of that ID.
+- Step 3: The system redirects to the Details page and displays: Title, Position, Full Description, Status, and Notes of the employee (if any).
+**Alternative Flow**: If the requested ID does not exist (due to an error or has been deleted), the system displays a 404 "Request Not Found" error and a back button.
+**Successful Result**: All the requested details are fully displayed on the screen.
+
+### Use Case 4:
+**Use Case Name**: Update Request Status
+**Actor**: Employee
+**Trigger**: The employee clicks the "Update" button on the details page of a request
+**Main Flow**:
+- Step 1: The system displays the form update (menu includes a dropdown to select New Status and a Notes input box).
+- Step 2: The employee selects a new status (e.g., "Processing" or "Done") and enters a note (e.g., "Expected alternative event")
+- Step 3: The employee clicks the "Save Changes" button
+- Step 4: The system status and the new note are updated in the database
+**Alternative flow**: If the user-selected status is invalid, the system will reject the update and display an error message
+**Successful result**: The requested status update was successful, and the reload screen displays the latest status
+
+### Day 3 — SRP Class Responsibility Table (no code)
+**Classes:**
+- `User` (entity/data)
+- `Request` (entity/data)
+- `RequestRepository` (data access)
+- `RequestService` (business rules)
+- `RequestController` (coordinates requests)
+- `RequestValidator` (validation rules)
+- `ViewRenderer` (renders HTML templates)
+- `NotificationService` (business rules)
+
+**Table:**
+| Class name | Responsibility (1 sentence) | Reason to change (1 reason only) |
+|---|---|---|
+| User | Stores user data (name, ID, role) | Data fields change |
+| Request | Stores request data (title, description, status) | Data fields change |
+| RequestRepository | Reads/writes requests to storage | Storage method changes |
+| RequestService | Applies business rules (allowed status changes) | Rules change |
+| RequestValidator | Validates input data | Validation rules change |
+| RequestController | Calls service and selects views | Routes/actions change |
+| ViewRenderer | Loads a view file and passes variables | Rendering method changes |
+| NotificationService | Send notifications when updated | notification method changes |
+
+## Day 4 — UML diagram (no code)
+
+## Day 5 — MVC Mapping + Route Table (no code)
+
+### 1. MVC Mapping Table
+
+| Item | MVC Layer | Why? |
+|---|---|---|
+| User | Model | Represents user data |
+| Request (data + status) | Model | Represents application data |
+| RequestRepository | Model | Accesses data source |
+| NotificationService | Model (Service) | Sending status alerts |
+| RequestController@index | Controller | Chooses which view to show |
+| requests/index.php | View | Displays list UI |
+| requests/create.php | View | Displays submitting new request forms UI |
+| requests/show.php | View | Displays details UI |
+
+### 2. Route Table
+
+| HTTP | URL | Controller@Action | Purpose |
+|---|---|---|---|
+| GET | /requests | RequestController@index | List requests |
+| GET | /requests/create | RequestController@create | Show create form |
+| POST | /requests | RequestController@store | Save new request |
+| GET | /requests/{id} | RequestController@show | View details |
+| POST | /requests/{id}/status | RequestController@updateStatus | Update status |
+| GET | /staff/requests | RequestController@staffIndex | Staff list view |
+| POST | /staff/requests/{id}/status | RequestController@updateStatus | Update requests status |
+
+## Day 6 — Minimal skeleton (tiny code or pseudocode)
+
+## Day 7 — Reflection (bridge to next week’s MVC)
+Answer these questions (short paragraphs):
+1. Which parts of your design are **Model**, **View**, and **Controller**?
+- Model: Request, RequestRepository (database access) and RequestService
+- View: Files containing the user interface (HTML/UI) located in the app/Views directory
+- Controller: RequestController
+
+2. Where should validation happen, and why?
+It should happen in the RequestValidator or at the beginning of the Controller
+--> Then immediately block misformatted, empty, or malicious data before it penetrates the system
+
+3. What would break if you put SQL inside a View file?
+- Breaks the MVC architecture and SRP principles
+- Mix of HTML and SQL can unmaintainable and non-reusable
+
+4. What code do you expect to write next week to make this real?
+- Logic for the Router to navigate URLs
+- Connect and retrieve data from the database
+- Write HTML/CSS code combined with PHP loops

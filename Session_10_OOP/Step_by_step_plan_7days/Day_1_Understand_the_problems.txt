@@ -1,0 +1,32 @@
+# Day 1 — Understand the problem (no code)
+- Write the **requirements list**.
+- Identify user roles:
+  - Student (creates requests)
+  - Staff (updates status)
+
+## Requirements list
+### 1. User Roles:
+**Student**: Creates and tracks repair requests
+**Staff**: Receives, processes, and updates request status
+
+### 2. Requirements List:
+- Students can log into the system
+- Students can create a new request including: Title, Location (room, building,...) and Description in details
+- The system automatically assigns the status Pending to newly created requests
+- Students can view a list of their submitted requests
+- Students can click on a request to view details
+- Students can track the status of their requests in real-time
+- Students can receive notifications when the status of their request changes
+
+- Staff can log into the system
+- Staff can view a dashboard of all pending requests assigned to them
+- Staff can click on a request to view details and update the status
+- Staff can view a list of all requests from the entire school
+- Staff can filter requests by status (Pending, In Progress, Done)
+- Staff can update the status of a request from Pending to In Progress
+- Staff can close a request by changing the status to Done
+
+- The system should send notifications to students when the status of their request changes
+- The system should maintain a history of status changes for each request
+- The system should allow students to delete their requests if they are no longer needed
+- The system should have a feedback mechanism for students to rate the service after their request is completed

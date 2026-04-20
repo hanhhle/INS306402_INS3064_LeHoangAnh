@@ -1,0 +1,26 @@
+# Day 5 — MVC Mapping + Route Table (no code)
+
+## 1. MVC Mapping Table
+
+| Item | MVC Layer | Why? |
+|---|---|---|
+| User | Model | Represents user data |
+| Request (data + status) | Model | Represents application data |
+| RequestRepository | Model | Accesses data source |
+| NotificationService | Model (Service) | Sending status alerts |
+| RequestController@index | Controller | Chooses which view to show |
+| requests/index.php | View | Displays list UI |
+| requests/create.php | View | Displays submitting new request forms UI |
+| requests/show.php | View | Displays details UI |
+
+## 2. Route Table
+
+| HTTP | URL | Controller@Action | Purpose |
+|---|---|---|---|
+| GET | /requests | RequestController@index | List requests |
+| GET | /requests/create | RequestController@create | Show create form |
+| POST | /requests | RequestController@store | Save new request |
+| GET | /requests/{id} | RequestController@show | View details |
+| POST | /requests/{id}/status | RequestController@updateStatus | Update status |
+| GET | /staff/requests | RequestController@staffIndex | Staff list view |
+| POST | /staff/requests/{id}/status | RequestController@updateStatus | Update requests status |

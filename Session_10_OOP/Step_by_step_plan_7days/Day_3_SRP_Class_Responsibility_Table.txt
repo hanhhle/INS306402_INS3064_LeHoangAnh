@@ -1,0 +1,23 @@
+# Day 3 — SRP Class Responsibility Table (no code)
+
+**Classes:**
+- `User` (entity/data)
+- `Request` (entity/data)
+- `RequestRepository` (data access)
+- `RequestService` (business rules)
+- `RequestController` (coordinates requests)
+- `RequestValidator` (validation rules)
+- `ViewRenderer` (renders HTML templates)
+- `NotificationService` (business rules)
+
+**Table:**
+| Class name | Responsibility (1 sentence) | Reason to change (1 reason only) |
+|---|---|---|
+| User | Stores user data (name, ID, role) | Data fields change |
+| Request | Stores request data (title, description, status) | Data fields change |
+| RequestRepository | Reads/writes requests to storage | Storage method changes |
+| RequestService | Applies business rules (allowed status changes) | Rules change |
+| RequestValidator | Validates input data | Validation rules change |
+| RequestController | Calls service and selects views | Routes/actions change |
+| ViewRenderer | Loads a view file and passes variables | Rendering method changes |
+| NotificationService | Send notifications when updated | notification method changes |

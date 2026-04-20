@@ -1,0 +1,18 @@
+# Day 7 — Reflection (bridge to next week’s MVC)
+1. Which parts of your design are **Model**, **View**, and **Controller**?
+- Model: Request, RequestRepository (database access) and RequestService
+- View: Files containing the user interface (HTML/UI) located in the app/Views directory
+- Controller: RequestController
+
+2. Where should validation happen, and why?
+It should happen in the RequestValidator or at the beginning of the Controller
+--> Then immediately block misformatted, empty, or malicious data before it penetrates the system
+
+3. What would break if you put SQL inside a View file?
+- Breaks the MVC architecture and SRP principles
+- Mix of HTML and SQL can unmaintainable and non-reusable
+
+4. What code do you expect to write next week to make this real?
+- Logic for the Router to navigate URLs
+- Connect and retrieve data from the database
+- Write HTML/CSS code combined with PHP loops

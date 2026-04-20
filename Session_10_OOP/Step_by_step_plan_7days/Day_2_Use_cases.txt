@@ -1,0 +1,48 @@
+# Day 2 — Use cases (no code)
+
+## Use Case 1: 
+**Use Case Name**: Submit a request
+**Actor**: Student
+**Trigger**: Students click the "Create New Request" button on the interface  
+**Main Flow (3–6 steps)**:
+- Step 1: The system displays the sample input request form
+- Step 2: Students enter the title, classroom, and error description
+- Step 3: Students click the "Submit" button
+- Step 4: The system data view shows no blank spaces
+- Step 5: The request is saved to the database with the status "Pending"
+**Alternative Flow (optional)**: In step 4, if the data is blank, the system will report an error and request the student to re-enter the information
+**Success Outcome**: The request is successfully created, and the student is redirected to the Request List page
+
+## Use Case 2:
+**Use Case Name**: View Request List
+**Actor**: Student
+**Trigger**: The student selects "My Request List" from the menu bar
+**Main Flow**:
+- Step 1: The system receives the access request from the student.
+- Step 2: The database queries the system to retrieve the appropriate request ID for the logged-in student.
+- Step 3: The system displays the list in a table format (including Title, Position, Creation Date, and Status).
+**Alternative Flow**: If the student has never created a request, the system displays the message: "You have no requests on the system."
+**Success Outcome**: The list of requests is clearly displayed for user tracking.
+
+## Use Case 3:
+**Use Case Name**: View Request Details
+**Actor**: Student or staff
+**Trigger**: The user clicks on the Title or the "View Details" button of a line in the list.
+**Main Flow**:
+- Step 1: The system ID is requested to be clicked.
+- Step 2: The database accesses the system to retrieve all the details of that ID.
+- Step 3: The system redirects to the Details page and displays: Title, Position, Full Description, Status, and Notes of the employee (if any).
+**Alternative Flow**: If the requested ID does not exist (due to an error or has been deleted), the system displays a 404 "Request Not Found" error and a back button.
+**Successful Result**: All the requested details are fully displayed on the screen.
+
+## Use Case 4:
+**Use Case Name**: Update Request Status
+**Actor**: Employee
+**Trigger**: The employee clicks the "Update" button on the details page of a request
+**Main Flow**:
+- Step 1: The system displays the form update (menu includes a dropdown to select New Status and a Notes input box).
+- Step 2: The employee selects a new status (e.g., "Processing" or "Done") and enters a note (e.g., "Expected alternative event")
+- Step 3: The employee clicks the "Save Changes" button
+- Step 4: The system status and the new note are updated in the database
+**Alternative flow**: If the user-selected status is invalid, the system will reject the update and display an error message
+**Successful result**: The requested status update was successful, and the reload screen displays the latest status
